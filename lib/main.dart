@@ -131,36 +131,9 @@ class Story extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Container(
-                height: 68,
-                width: 68,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(24),
-                  gradient: const LinearGradient(
-                    // begin: Alignment.topCenter,
-                    // end: Alignment.bottomCenter,
-                    begin: Alignment.topRight,
-                    // end: Alignment.bottomLeft,
-                    colors: [
-                      Color(0xff376AED),
-                      Color(0xff49B0E2),
-                      Color(0xff9CECFB),
-                    ],
-                  ),
-                ),
-                child: Container(
-                  margin: const EdgeInsets.all(3),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  padding: const EdgeInsets.all(4),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(story.imageFileName),
-                  ),
-                ),
-              ),
+              story.isViewed
+                  ? _storyBorderViewedState()
+                  : _storyBorderNotViewedState(),
               Positioned(
                 bottom: -3,
                 right: -3,
@@ -181,6 +154,63 @@ class Story extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+
+  Container _storyBorderNotViewedState() {
+    return Container(
+      height: 68,
+      width: 68,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(24),
+        gradient: const LinearGradient(
+          // begin: Alignment.topCenter,
+          // end: Alignment.bottomCenter,
+          begin: Alignment.topRight,
+          // end: Alignment.bottomLeft,
+          colors: [
+            Color(0xff376AED),
+            Color(0xff49B0E2),
+            Color(0xff9CECFB),
+          ],
+        ),
+      ),
+      child: Container(
+        margin: const EdgeInsets.all(2),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(22),
+        ),
+        padding: const EdgeInsets.all(5),
+        child: _storyProfileImage(),
+      ),
+    );
+  }
+
+  Container _storyBorderViewedState() {
+    return Container(
+      height: 68,
+      width: 68,
+      decoration: BoxDecoration(
+        color: Colors.indigo.shade50,
+        borderRadius: BorderRadius.circular(24),
+      ),
+      child: Container(
+        margin: const EdgeInsets.all(2),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(22),
+        ),
+        padding: const EdgeInsets.all(5),
+        child: _storyProfileImage(),
+      ),
+    );
+  }
+
+  Widget _storyProfileImage() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(17),
+      child: Image.asset(story.imageFileName),
     );
   }
 }
