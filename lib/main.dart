@@ -12,25 +12,32 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final primaryTextColor = Color(0xff0D253C);
-    final secondaryTextColor = Color(0xff2D4379);
+    const primaryTextColor = Color(0xff0D253C);
+    const secondaryTextColor = Color(0xff2D4379);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Blog Club',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           titleMedium: TextStyle(
-            fontFamily: defaultFontFamily,
-            color: secondaryTextColor,
-            // fontSize: 14,
-          ),
+              fontFamily: defaultFontFamily,
+              color: secondaryTextColor,
+              fontSize: 18,
+              fontWeight: FontWeight.w200
+              // fontSize: 14,
+              ),
           titleLarge: TextStyle(
             fontFamily: defaultFontFamily,
             fontWeight: FontWeight.bold,
             color: primaryTextColor,
           ),
+          headlineMedium: TextStyle(
+              fontFamily: defaultFontFamily,
+              color: primaryTextColor,
+              fontSize: 24,
+              fontWeight: FontWeight.w700),
           bodyMedium: TextStyle(
             fontFamily: defaultFontFamily,
             color: secondaryTextColor,
@@ -65,18 +72,18 @@ class HomeScreen extends StatelessWidget {
                         style: themeData.textTheme.titleMedium),
                     Image.asset(
                       Assets.img.icons.notification.path,
-                      width: 30,
-                      height: 30,
+                      width: 32,
+                      height: 32,
                     ),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(32, 0, 0, 24),
+                padding: const EdgeInsets.fromLTRB(32, 0, 0, 16),
                 child: Text("Explore today's",
-                    style: themeData.textTheme.titleLarge),
+                    style: themeData.textTheme.headlineMedium),
               ),
-              StoryList(stories: stories, themeData: themeData)
+              StoryList(stories: stories, themeData: themeData),
             ],
           ),
         ),
@@ -157,7 +164,7 @@ class Story extends StatelessWidget {
     );
   }
 
-  Container _storyBorderNotViewedState() {
+  Widget _storyBorderNotViewedState() {
     return Container(
       height: 68,
       width: 68,
@@ -187,12 +194,12 @@ class Story extends StatelessWidget {
     );
   }
 
-  Container _storyBorderViewedState() {
+  Widget _storyBorderViewedState() {
     return Container(
       height: 68,
       width: 68,
       decoration: BoxDecoration(
-        color: Colors.indigo.shade50,
+        color: const Color(0xff7B8BB2).withOpacity(0.2),
         borderRadius: BorderRadius.circular(24),
       ),
       child: Container(
