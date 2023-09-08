@@ -1,3 +1,4 @@
+import 'package:blog_club/carousel_slider/carousel_slider.dart';
 import 'package:blog_club/data.dart';
 import 'package:blog_club/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
             fontFamily: defaultFontFamily,
             fontWeight: FontWeight.bold,
             color: primaryTextColor,
+            fontSize: 18,
           ),
           headlineMedium: TextStyle(
               fontFamily: defaultFontFamily,
@@ -68,8 +70,7 @@ class HomeScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text('Hi, Jonathan',
-                        style: themeData.textTheme.titleMedium),
+                    Text('Hi, Mersad', style: themeData.textTheme.titleMedium),
                     Image.asset(
                       Assets.img.icons.notification.path,
                       width: 32,
@@ -84,9 +85,118 @@ class HomeScreen extends StatelessWidget {
                     style: themeData.textTheme.headlineMedium),
               ),
               StoryList(stories: stories, themeData: themeData),
+              const SizedBox(height: 16),
+              const SizedBox(height: 330,
+                child: CategoryList()),
+              
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CategoryList extends StatelessWidget {
+  const CategoryList({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final categories = AppDatabase.categories;
+    return CarouselSlider.builder(
+      itemCount: categories.length,
+      itemBuilder: (context, index, realIndex) {
+        return CategoryItem(
+          left: realIndex == 0 ? 32 : 8,
+          right: realIndex == categories.length - 1 ? 32 : 8,
+          category: categories[realIndex],
+        );
+      },
+      options: CarouselOptions(
+        scrollPhysics: const BouncingScrollPhysics(),
+        padEnds: false,
+        scrollDirection: Axis.horizontal,
+        viewportFraction: 0.8,
+        aspectRatio: 1.2,
+        initialPage: 0,
+        disableCenter: true,
+        enableInfiniteScroll: false,
+        enlargeCenterPage: true,
+        enlargeStrategy: CenterPageEnlargeStrategy.height,
+      ),
+    );
+  }
+}
+
+class CategoryItem extends StatelessWidget {
+  final Category category;
+  final double left;
+  final double right;
+  const CategoryItem({
+    super.key,
+    required this.category,
+    required this.left,
+    required this.right,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.fromLTRB(left, 0, right, 0),
+      child: Stack(
+        children: [
+          Positioned.fill(
+            top: 50,
+            right: 56,
+            left: 56,
+            bottom: 20,
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(32),
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 18,
+                      spreadRadius: 0.5,
+                      color: const Color(0xff0D253C).withOpacity(0.70),
+                      offset: const Offset(0, 16),
+                    )
+                  ]),
+            ),
+          ),
+          Positioned.fill(
+            child: Container(
+              margin: const EdgeInsets.fromLTRB(0, 0, 0, 16),
+              foregroundDecoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(32),
+                  gradient: const LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.center,
+                      colors: [
+                        Color(0xff0D253C),
+                        Colors.transparent,
+                      ])),
+              decoration: BoxDecoration(
+                // color: const Color.fromARGB(226, 16, 16, 82),
+                borderRadius: BorderRadius.circular(32),
+              ),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(32),
+                  child: Image.asset(category.imageFileName, fit: BoxFit.cover)),
+            ),
+          ),
+          Positioned(
+              bottom: 50,
+              left: 32,
+              child: Text(
+                category.title,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .apply(color: Colors.white),
+              )),
+        ],
       ),
     );
   }
@@ -114,14 +224,14 @@ class StoryList extends StatelessWidget {
           itemCount: stories.length,
           itemBuilder: (context, index) {
             final story = stories[index];
-            return Story(story: story, themeData: themeData);
+            return StoryItem(story: story, themeData: themeData);
           }),
     );
   }
 }
 
-class Story extends StatelessWidget {
-  const Story({
+class StoryItem extends StatelessWidget {
+  const StoryItem({
     super.key,
     required this.story,
     required this.themeData,
@@ -221,3 +331,6 @@ class Story extends StatelessWidget {
     );
   }
 }
+
+
+// TODO: implemeted: Category List Slider with CarouselSlider.Builder()
