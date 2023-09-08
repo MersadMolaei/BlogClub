@@ -76,78 +76,110 @@ class HomeScreen extends StatelessWidget {
                 child: Text("Explore today's",
                     style: themeData.textTheme.titleLarge),
               ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: 100,
-                child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
-                    itemCount: stories.length,
-                    itemBuilder: (context, index) {
-                      final story = stories[index];
-                      return Container(
-                        margin: const EdgeInsets.fromLTRB(4, 0, 4, 0),
-                        child: Column(
-                          children: [
-                            Stack(
-                              children: [
-                                Container(
-                                  height: 68,
-                                  width: 68,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(24),
-                                    gradient: const LinearGradient(
-                                      // begin: Alignment.topCenter,
-                                      // end: Alignment.bottomCenter,
-                                      begin: Alignment.topRight,
-                                      // end: Alignment.bottomLeft,
-                                      colors: [
-                                        Color(0xff376AED),
-                                        Color(0xff49B0E2),
-                                        Color(0xff9CECFB),
-                                      ],
-                                    ),
-                                  ),
-                                  child: Container(
-                                    margin: const EdgeInsets.all(3),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    padding: const EdgeInsets.all(4),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(16),
-                                      child: Image.asset(story.imageFileName),
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  bottom: -3,
-                                  right: -3,
-                                  child: Image.asset(
-                                    story.iconFileName,
-                                    width: 24,
-                                    height: 24,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              story.name,
-                              style: themeData.textTheme.bodyMedium,
-                            )
-                          ],
-                        ),
-                      );
-                    }),
-              )
+              StoryList(stories: stories, themeData: themeData)
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class StoryList extends StatelessWidget {
+  const StoryList({
+    super.key,
+    required this.stories,
+    required this.themeData,
+  });
+
+  final List<StoryData> stories;
+  final ThemeData themeData;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      height: 100,
+      child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
+          itemCount: stories.length,
+          itemBuilder: (context, index) {
+            final story = stories[index];
+            return Story(story: story, themeData: themeData);
+          }),
+    );
+  }
+}
+
+class Story extends StatelessWidget {
+  const Story({
+    super.key,
+    required this.story,
+    required this.themeData,
+  });
+
+  final StoryData story;
+  final ThemeData themeData;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(4, 0, 4, 0),
+      child: Column(
+        children: [
+          Stack(
+            children: [
+              Container(
+                height: 68,
+                width: 68,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(24),
+                  gradient: const LinearGradient(
+                    // begin: Alignment.topCenter,
+                    // end: Alignment.bottomCenter,
+                    begin: Alignment.topRight,
+                    // end: Alignment.bottomLeft,
+                    colors: [
+                      Color(0xff376AED),
+                      Color(0xff49B0E2),
+                      Color(0xff9CECFB),
+                    ],
+                  ),
+                ),
+                child: Container(
+                  margin: const EdgeInsets.all(3),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding: const EdgeInsets.all(4),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image.asset(story.imageFileName),
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: -3,
+                right: -3,
+                child: Image.asset(
+                  story.iconFileName,
+                  width: 24,
+                  height: 24,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          Text(
+            story.name,
+            style: themeData.textTheme.bodyMedium,
+          )
+        ],
       ),
     );
   }
