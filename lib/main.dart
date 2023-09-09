@@ -86,9 +86,7 @@ class HomeScreen extends StatelessWidget {
               ),
               StoryList(stories: stories, themeData: themeData),
               const SizedBox(height: 16),
-              const SizedBox(height: 330,
-                child: CategoryList()),
-              
+              const SizedBox(height: 330, child: CategoryList()),
             ],
           ),
         ),
@@ -183,7 +181,8 @@ class CategoryItem extends StatelessWidget {
               ),
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(32),
-                  child: Image.asset(category.imageFileName, fit: BoxFit.cover)),
+                  child:
+                      Image.asset(category.imageFileName, fit: BoxFit.cover)),
             ),
           ),
           Positioned(
@@ -240,6 +239,26 @@ class StoryItem extends StatelessWidget {
   final StoryData story;
   final ThemeData themeData;
 
+  Color _categoryIconColor(String categoryType) {
+    Color categoryIconColor = Colors.green;
+
+    switch (categoryType) {
+      case 'assets/img/icons/category_1.png':
+        categoryIconColor = Colors.blueAccent;
+        break;
+      case 'assets/img/icons/category_2.png':
+        categoryIconColor = Colors.orangeAccent;
+        break;
+      case 'assets/img/icons/category_3.png':
+        categoryIconColor = Colors.purpleAccent;
+        break;
+      case 'assets/img/icons/category_4.png':
+        categoryIconColor = Colors.redAccent;
+        break;
+    }
+    return categoryIconColor;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -254,10 +273,20 @@ class StoryItem extends StatelessWidget {
               Positioned(
                 bottom: -3,
                 right: -3,
-                child: Image.asset(
-                  story.iconFileName,
-                  width: 24,
-                  height: 24,
+                child: Container(
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(
+                      color: _categoryIconColor(story.iconFileName),
+                      blurRadius: 7,
+                      spreadRadius: -7,
+                      offset: const Offset(-6, -6),
+                    )
+                  ]),
+                  child: Image.asset(
+                    story.iconFileName,
+                    width: 24,
+                    height: 24,
+                  ),
                 ),
               ),
             ],
@@ -331,6 +360,3 @@ class StoryItem extends StatelessWidget {
     );
   }
 }
-
-
-// TODO: implemeted: Category List Slider with CarouselSlider.Builder()

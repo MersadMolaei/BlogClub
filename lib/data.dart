@@ -57,13 +57,13 @@ class AppDatabase {
           name: 'Richard',
           imageFileName: Assets.img.stories.story10.path,
           iconFileName: Assets.img.icons.category2.path,
-          isViewed: false),
+          isViewed: true),
       StoryData(
           id: 1003,
           name: 'Jasmine',
           imageFileName: Assets.img.stories.story1.path,
           iconFileName: Assets.img.icons.category3.path,
-          isViewed: true),
+          isViewed: false),
       StoryData(
           id: 1004,
           name: 'Lucas',
