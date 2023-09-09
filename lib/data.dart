@@ -54,46 +54,46 @@ class AppDatabase {
           isViewed: false),
       StoryData(
           id: 1002,
+          name: 'Grace',
+          imageFileName: Assets.img.stories.story2.path,
+          iconFileName: Assets.img.icons.category2.path,
+          isViewed: false),
+      StoryData(
+          id: 1003,
           name: 'Richard',
           imageFileName: Assets.img.stories.story10.path,
           iconFileName: Assets.img.icons.category2.path,
           isViewed: true),
       StoryData(
-          id: 1003,
+          id: 1004,
           name: 'Jasmine',
           imageFileName: Assets.img.stories.story1.path,
           iconFileName: Assets.img.icons.category3.path,
           isViewed: false),
       StoryData(
-          id: 1004,
+          id: 1005,
           name: 'Lucas',
           imageFileName: Assets.img.stories.story3.path,
           iconFileName: Assets.img.icons.category4.path,
           isViewed: false),
       StoryData(
-          id: 1005,
+          id: 1006,
           name: 'Isabella',
           imageFileName: Assets.img.stories.story4.path,
-          iconFileName: Assets.img.icons.category2.path,
+          iconFileName: Assets.img.icons.category3.path,
           isViewed: false),
       StoryData(
-          id: 1006,
+          id: 1007,
           name: 'Olivia',
           imageFileName: Assets.img.stories.story6.path,
           iconFileName: Assets.img.icons.category1.path,
           isViewed: false),
       StoryData(
-          id: 1007,
+          id: 1008,
           name: 'Amelia',
           imageFileName: Assets.img.stories.story7.path,
           iconFileName: Assets.img.icons.category4.path,
           isViewed: true),
-      StoryData(
-          id: 1008,
-          name: 'Grace',
-          imageFileName: Assets.img.stories.story2.path,
-          iconFileName: Assets.img.icons.category3.path,
-          isViewed: false),
     ];
   }
 

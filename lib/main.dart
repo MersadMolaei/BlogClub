@@ -214,8 +214,8 @@ class StoryList extends StatelessWidget {
   List<StoryData> _sortStories(List<StoryData> stories) {
     // List<StoryData> stories = StoriesDatabase.stories;
 
-    List<StoryData> updatedStories = [];
     List<StoryData> viewedStories = [];
+    List<StoryData> updatedStories = [];
 
     for (var story in stories) {
       if (story.isViewed) {
@@ -260,7 +260,7 @@ class StoryItem extends StatelessWidget {
   final ThemeData themeData;
 
   Color _categoryIconColor(String categoryType) {
-    Color categoryIconColor = Colors.green;
+    late Color categoryIconColor;
 
     switch (categoryType) {
       case 'assets/img/icons/category_1.png':
