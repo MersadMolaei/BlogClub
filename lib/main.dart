@@ -211,6 +211,26 @@ class StoryList extends StatelessWidget {
   final List<StoryData> stories;
   final ThemeData themeData;
 
+  List<StoryData> _sortStories(List<StoryData> stories) {
+    // List<StoryData> stories = StoriesDatabase.stories;
+
+    List<StoryData> updatedStories = [];
+    List<StoryData> viewedStories = [];
+
+    for (var story in stories) {
+      if (story.isViewed) {
+        viewedStories.add(story);
+      } else {
+        updatedStories.add(story);
+      }
+    }
+
+    // Move items with isViewed to the end of the list
+    updatedStories.addAll(viewedStories);
+
+    return updatedStories;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -222,7 +242,7 @@ class StoryList extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
           itemCount: stories.length,
           itemBuilder: (context, index) {
-            final story = stories[index];
+            final story = _sortStories(stories)[index];
             return StoryItem(story: story, themeData: themeData);
           }),
     );

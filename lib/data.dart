@@ -87,7 +87,7 @@ class AppDatabase {
           name: 'Amelia',
           imageFileName: Assets.img.stories.story7.path,
           iconFileName: Assets.img.icons.category4.path,
-          isViewed: false),
+          isViewed: true),
       StoryData(
           id: 1008,
           name: 'Grace',
