@@ -292,16 +292,16 @@ class StoryItem extends StatelessWidget {
 
     switch (categoryType) {
       case 'assets/img/icons/category_1.png':
-        storyBorderColor = [Colors.lightBlueAccent,Colors.indigo];
+        storyBorderColor = [Colors.lightBlueAccent, Colors.indigo];
         break;
       case 'assets/img/icons/category_2.png':
-        storyBorderColor = [Colors.orangeAccent,Colors.deepOrange,];
+        storyBorderColor = [Colors.orangeAccent, Colors.deepOrange];
         break;
       case 'assets/img/icons/category_3.png':
-        storyBorderColor = [Colors.purpleAccent,Colors.deepPurple,];
+        storyBorderColor = [Colors.purpleAccent, Colors.deepPurple];
         break;
       case 'assets/img/icons/category_4.png':
-        storyBorderColor = [Colors.redAccent,Colors.red];
+        storyBorderColor = [Colors.redAccent, Colors.red];
         break;
     }
     return storyBorderColor;
@@ -378,17 +378,16 @@ class StoryItem extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
         gradient: LinearGradient(
-          // begin: Alignment.topCenter,
-          // end: Alignment.bottomCenter,
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          // colors: [
-          //   Color(0xff376AED),
-          //   Color(0xff49B0E2),
-          //   Color(0xff9CECFB),
-          // ],
-          colors: _storyItemBorderColor(story.iconFileName)
-        ),
+            // begin: Alignment.topCenter,
+            // end: Alignment.bottomCenter,
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            // colors: [
+            //   Color(0xff376AED),
+            //   Color(0xff49B0E2),
+            //   Color(0xff9CECFB),
+            // ],
+            colors: _storyItemBorderColor(story.iconFileName)),
       ),
       child: Container(
         margin: const EdgeInsets.all(2),
@@ -495,9 +494,20 @@ class PostItem extends StatelessWidget {
           ]),
       child: Row(
         children: [
-          ClipRRect(
-              borderRadius: BorderRadius.circular(16), // 24
-              child: Image.asset(post.imageFileName)),
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 6,
+                      // color: const Color(0xff5282FF).withOpacity(0.5),
+                      color: const Color(0xff0D253C).withOpacity(0.37),
+                      offset: const Offset(6, 0))
+                ]),
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(16), // 24
+                child: Image.asset(post.imageFileName)),
+          ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
