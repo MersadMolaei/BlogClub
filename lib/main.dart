@@ -110,7 +110,8 @@ class HomeScreen extends StatelessWidget {
               ),
               StoryList(stories: stories, themeData: themeData),
               const SizedBox(height: 16),
-              const SizedBox(height: 330, width: double.infinity,child: CategoryList()),
+              const SizedBox(
+                  height: 330, width: double.infinity, child: CategoryList()),
               const PostList(),
               const SizedBox(height: 32),
             ],
@@ -175,16 +176,17 @@ class CategoryItem extends StatelessWidget {
             top: 50,
             right: 56,
             left: 56,
-            bottom: 20,
+            bottom: 30, // 20
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(32),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
-                      blurRadius: 18,
+                      blurRadius: 13, // 18
                       spreadRadius: 0.5,
-                      color: const Color(0xff0D253C).withOpacity(0.70),
-                      offset: const Offset(0, 16),
+                      color: Color(0xff0D253C),
+                      // .withOpacity(0.90), // 0.70
+                      offset: Offset(0, 16), // 0 16
                     )
                   ]),
             ),
@@ -308,7 +310,7 @@ class StoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(4, 0, 4, 0),
+      margin: const EdgeInsets.fromLTRB(0, 0, 8, 0),
       child: Column(
         children: [
           Stack(
@@ -418,7 +420,7 @@ class PostList extends StatelessWidget {
         padding: const EdgeInsets.only(left: 32, right: 20),
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 'Latest News',
