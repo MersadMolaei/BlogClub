@@ -287,6 +287,26 @@ class StoryItem extends StatelessWidget {
   final StoryData story;
   final ThemeData themeData;
 
+  List<Color> _storyItemBorderColor(String categoryType) {
+    late List<Color> storyBorderColor;
+
+    switch (categoryType) {
+      case 'assets/img/icons/category_1.png':
+        storyBorderColor = [Colors.lightBlueAccent,Colors.indigo];
+        break;
+      case 'assets/img/icons/category_2.png':
+        storyBorderColor = [Colors.orangeAccent,Colors.deepOrange,];
+        break;
+      case 'assets/img/icons/category_3.png':
+        storyBorderColor = [Colors.purpleAccent,Colors.deepPurple,];
+        break;
+      case 'assets/img/icons/category_4.png':
+        storyBorderColor = [Colors.redAccent,Colors.red];
+        break;
+    }
+    return storyBorderColor;
+  }
+
   Color _categoryIconColor(String categoryType) {
     late Color categoryIconColor;
 
@@ -357,16 +377,17 @@ class StoryItem extends StatelessWidget {
       width: 68,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
-        gradient: const LinearGradient(
+        gradient: LinearGradient(
           // begin: Alignment.topCenter,
           // end: Alignment.bottomCenter,
-          begin: Alignment.topRight,
-          // end: Alignment.bottomLeft,
-          colors: [
-            Color(0xff376AED),
-            Color(0xff49B0E2),
-            Color(0xff9CECFB),
-          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          // colors: [
+          //   Color(0xff376AED),
+          //   Color(0xff49B0E2),
+          //   Color(0xff9CECFB),
+          // ],
+          colors: _storyItemBorderColor(story.iconFileName)
         ),
       ),
       child: Container(
