@@ -110,7 +110,7 @@ class HomeScreen extends StatelessWidget {
               ),
               StoryList(stories: stories, themeData: themeData),
               const SizedBox(height: 16),
-              const SizedBox(height: 330, child: CategoryList()),
+              const SizedBox(height: 330, width: double.infinity,child: CategoryList()),
               const PostList(),
               const SizedBox(height: 32),
             ],
@@ -442,14 +442,14 @@ class PostList extends StatelessWidget {
           physics: const ClampingScrollPhysics(),
           itemBuilder: (context, index) {
             final post = posts[index];
-            return Post(post: post);
+            return PostItem(post: post);
           }),
     ]);
   }
 }
 
-class Post extends StatelessWidget {
-  const Post({
+class PostItem extends StatelessWidget {
+  const PostItem({
     super.key,
     required this.post,
   });
