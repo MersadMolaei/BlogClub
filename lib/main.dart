@@ -3,8 +3,16 @@ import 'package:blog_club/data.dart';
 import 'package:blog_club/gen/assets.gen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.white,
+    statusBarIconBrightness: Brightness.dark,
+    systemNavigationBarColor: Colors.white,
+    systemNavigationBarIconBrightness: Brightness.dark,
+  ));
+
   runApp(const MyApp());
 }
 
@@ -63,6 +71,12 @@ class MyApp extends StatelessWidget {
               color: primaryTextColor,
               fontSize: 24,
               fontWeight: FontWeight.w700),
+          bodySmall: TextStyle(
+            fontFamily: defaultFontFamily,
+            fontWeight: FontWeight.w700,
+            color: Color(0xff7B8BB2),
+            fontSize: 10,
+          ),
           bodyMedium: TextStyle(
             fontFamily: defaultFontFamily,
             color: secondaryTextColor,
@@ -70,7 +84,12 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const HomeScreen(),
+      home: const Stack(
+        children: [
+          Positioned.fill(child: HomeScreen()),
+          Positioned(bottom: 0, left: 0, right: 0, child: BottomNavigation())
+        ],
+      ),
     );
   }
 }
@@ -571,6 +590,95 @@ class PostItem extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class BottomNavigation extends StatelessWidget {
+  const BottomNavigation({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 85,
+      child: Stack(
+        children: [
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: 65,
+              decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                BoxShadow(
+                  blurRadius: 20,
+                  color: const Color(0xff9B8487).withOpacity(0.30),
+                )
+              ]),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    BottomNavigationItem(
+                        iconFileName: Assets.img.icons.home.path,
+                        activeiconFileName: Assets.img.icons.home.path,
+                        title: 'Home'),
+                    BottomNavigationItem(
+                        iconFileName: Assets.img.icons.articles.path,
+                        activeiconFileName: Assets.img.icons.articles.path,
+                        title: 'Articles'),
+                    const SizedBox(width: 8),
+                    BottomNavigationItem(
+                        iconFileName: Assets.img.icons.search.path,
+                        activeiconFileName: Assets.img.icons.search.path,
+                        title: 'Search'),
+                    BottomNavigationItem(
+                        iconFileName: Assets.img.icons.menu.path,
+                        activeiconFileName: Assets.img.icons.menu.path,
+                        title: 'Menu'),
+                  ]),
+            ),
+          ),
+          Center(
+            child: Container(
+              width: 65,
+              height: 85,
+              alignment: Alignment.topCenter,
+              child: Container(
+                  height: 65,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(32.5),
+                    color: const Color(0xff376AED),
+                    border: Border.all(color: Colors.white, width: 4),
+                  ),
+                  child: Image.asset(Assets.img.icons.plus.path)),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class BottomNavigationItem extends StatelessWidget {
+  final String iconFileName;
+  final String activeiconFileName;
+  final String title;
+
+  const BottomNavigationItem(
+      {super.key,
+      required this.iconFileName,
+      required this.activeiconFileName,
+      required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset(iconFileName),
+        const SizedBox(height: 4),
+        Text(title, style: Theme.of(context).textTheme.bodySmall),
+      ],
     );
   }
 }
