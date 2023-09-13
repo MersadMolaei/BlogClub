@@ -114,11 +114,7 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text('Hi, Mersad', style: themeData.textTheme.titleMedium),
-                    Image.asset(
-                      Assets.img.icons.notification.path,
-                      width: 32,
-                      height: 32,
-                    ),
+                    Assets.img.icons.notification.image(height: 32, width: 32),
                   ],
                 ),
               ),
