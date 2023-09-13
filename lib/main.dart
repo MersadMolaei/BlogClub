@@ -132,7 +132,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                   height: 330, width: double.infinity, child: CategoryList()),
               const PostList(),
-              const SizedBox(height: 32),
+              const SizedBox(height: 90),
             ],
           ),
         ),
@@ -609,12 +609,17 @@ class BottomNavigation extends StatelessWidget {
             right: 0,
             child: Container(
               height: 65,
-              decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                BoxShadow(
-                  blurRadius: 20,
-                  color: const Color(0xff9B8487).withOpacity(0.30),
-                )
-              ]),
+              decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(32.5),
+                      topRight: Radius.circular(32.5)),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 20,
+                      color: const Color(0xff9B8487).withOpacity(0.5),
+                    )
+                  ]),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -626,7 +631,7 @@ class BottomNavigation extends StatelessWidget {
                         iconFileName: Assets.img.icons.articles.path,
                         activeiconFileName: Assets.img.icons.articles.path,
                         title: 'Articles'),
-                    const SizedBox(width: 8),
+                    const SizedBox(width: 24),
                     BottomNavigationItem(
                         iconFileName: Assets.img.icons.search.path,
                         activeiconFileName: Assets.img.icons.search.path,
@@ -646,6 +651,12 @@ class BottomNavigation extends StatelessWidget {
               child: Container(
                   height: 65,
                   decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          // color: const Color(0xff9B8487).withOpacity(1.0),
+                          color: const Color(0xff0D253C).withOpacity(0.3),
+                          blurRadius: 12),
+                    ],
                     borderRadius: BorderRadius.circular(32.5),
                     color: const Color(0xff376AED),
                     border: Border.all(color: Colors.white, width: 4),
