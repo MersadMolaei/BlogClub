@@ -1,6 +1,7 @@
 import 'package:blog_club/carousel_slider/carousel_slider.dart';
 import 'package:blog_club/data.dart';
 import 'package:blog_club/gen/assets.gen.dart';
+import 'package:blog_club/gen/fonts.gen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,7 +18,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  static const defaultFontFamily = 'Avenir';
   const MyApp({super.key});
 
   @override
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           style: ButtonStyle(
             textStyle: MaterialStatePropertyAll(
               TextStyle(
-                fontFamily: defaultFontFamily,
+                fontFamily: FontFamily.avenir,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
                 // color: primaryColor,
@@ -46,39 +46,39 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         textTheme: const TextTheme(
           titleSmall: TextStyle(
-              fontFamily: defaultFontFamily,
+              fontFamily: FontFamily.avenir,
               color: primaryTextColor,
               fontSize: 14,
               fontWeight: FontWeight.w400),
           titleMedium: TextStyle(
-              fontFamily: defaultFontFamily,
+              fontFamily: FontFamily.avenir,
               color: secondaryTextColor,
               fontSize: 18,
               fontWeight: FontWeight.w200),
           titleLarge: TextStyle(
-            fontFamily: defaultFontFamily,
+            fontFamily: FontFamily.avenir,
             fontWeight: FontWeight.bold,
             color: primaryTextColor,
             fontSize: 18,
           ),
           headlineSmall: TextStyle(
-              fontFamily: defaultFontFamily,
+              fontFamily: FontFamily.avenir,
               color: primaryTextColor,
               fontSize: 20,
               fontWeight: FontWeight.w700),
           headlineMedium: TextStyle(
-              fontFamily: defaultFontFamily,
+              fontFamily: FontFamily.avenir,
               color: primaryTextColor,
               fontSize: 24,
               fontWeight: FontWeight.w700),
           bodySmall: TextStyle(
-            fontFamily: defaultFontFamily,
+            fontFamily: FontFamily.avenir,
             fontWeight: FontWeight.w700,
             color: Color(0xff7B8BB2),
             fontSize: 10,
           ),
           bodyMedium: TextStyle(
-            fontFamily: defaultFontFamily,
+            fontFamily: FontFamily.avenir,
             color: secondaryTextColor,
             fontSize: 12,
           ),
@@ -533,7 +533,7 @@ class PostItem extends StatelessWidget {
                   Text(
                     post.caption,
                     style: const TextStyle(
-                      fontFamily: MyApp.defaultFontFamily,
+                      fontFamily: FontFamily.avenir,
                       color: Color(0xff376AED),
                       fontWeight: FontWeight.w700,
                       fontSize: 14,
