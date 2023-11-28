@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'dart:async';
 import 'package:blog_club/gen/assets.gen.dart';
+import 'package:blog_club/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -17,10 +18,16 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
+    Future.delayed(const Duration(seconds: 2)).then((value) {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const HomeScreen()));
+      // TODO: Try CupertinoPageRoute Instead of MaterialPageRoute.
+      //* for changing the page transition animation
+    });
     super.initState();
     // Start the timer when the widget is initialized
     _timer = Timer.periodic(
-      const Duration(milliseconds: 1200), //^ 500
+      const Duration(milliseconds: 500), //^ 500
       (Timer timer) {
         setState(() {
           // Toggle the value of _showFirstLogo
@@ -84,7 +91,6 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-
 
 // Image.asset(
 //             Assets.img.icons.iran1Splash.path,
