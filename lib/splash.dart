@@ -1,11 +1,41 @@
 import 'dart:ui';
-
+import 'dart:async';
 import 'package:blog_club/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  Timer? _timer;
+  bool _showFirstLogo = true;
+
+  @override
+  void initState() {
+    super.initState();
+    // Start the timer when the widget is initialized
+    _timer = Timer.periodic(
+      const Duration(milliseconds: 2000), //^ 500
+      (Timer timer) {
+        setState(() {
+          // Toggle the value of _showFirstLogo
+          _showFirstLogo = !_showFirstLogo;
+        });
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    // Cancel the timer when the widget is disposed
+    _timer?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +67,15 @@ class SplashScreen extends StatelessWidget {
           //   Assets.img.icons.blogSplash.path,
           //   // width: 230,
           // ),
-          child: Image.asset(
-            Assets.img.icons.iran1Splash.path,
-            width: 230,
-          ),
+          child: _showFirstLogo
+              ? Image.asset(
+                  Assets.img.icons.iran1Splash.path,
+                  width: 230,
+                )
+              : SvgPicture.asset(
+                  Assets.img.icons.iranBlackSplash.path,
+                  height: 200,
+                ),
           // child: SvgPicture.asset(
           //   Assets.img.icons.iranBlackSplash.path,
           //   height: 200,
@@ -50,3 +85,13 @@ class SplashScreen extends StatelessWidget {
     );
   }
 }
+
+
+// Image.asset(
+//             Assets.img.icons.iran1Splash.path,
+//             width: 230,
+//           ),
+//           child: SvgPicture.asset(
+//             Assets.img.icons.iranBlackSplash.path,
+//             height: 200,
+//           ),
