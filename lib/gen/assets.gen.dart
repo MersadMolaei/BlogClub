@@ -8,6 +8,8 @@
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 
 class $AssetsFontsGen {
   const $AssetsFontsGen();
@@ -81,9 +83,20 @@ class $AssetsFontsGen {
 class $AssetsImgGen {
   const $AssetsImgGen();
 
+  $AssetsImgBackgroundGen get background => const $AssetsImgBackgroundGen();
   $AssetsImgIconsGen get icons => const $AssetsImgIconsGen();
   $AssetsImgPostsGen get posts => const $AssetsImgPostsGen();
   $AssetsImgStoriesGen get stories => const $AssetsImgStoriesGen();
+}
+
+class $AssetsImgBackgroundGen {
+  const $AssetsImgBackgroundGen();
+
+  /// File path: assets/img/background/bg.jpg
+  AssetGenImage get bg => const AssetGenImage('assets/img/background/bg.jpg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [bg];
 }
 
 class $AssetsImgIconsGen {
@@ -96,12 +109,20 @@ class $AssetsImgIconsGen {
   /// File path: assets/img/icons/Home.png
   AssetGenImage get home => const AssetGenImage('assets/img/icons/Home.png');
 
+  /// File path: assets/img/icons/Iran1Splash.png
+  AssetGenImage get iran1Splash =>
+      const AssetGenImage('assets/img/icons/Iran1Splash.png');
+
   /// File path: assets/img/icons/Menu.png
   AssetGenImage get menu => const AssetGenImage('assets/img/icons/Menu.png');
 
   /// File path: assets/img/icons/Search.png
   AssetGenImage get search =>
       const AssetGenImage('assets/img/icons/Search.png');
+
+  /// File path: assets/img/icons/blogSplash.png
+  AssetGenImage get blogSplash =>
+      const AssetGenImage('assets/img/icons/blogSplash.png');
 
   /// File path: assets/img/icons/category_1.png
   AssetGenImage get category1 =>
@@ -119,6 +140,18 @@ class $AssetsImgIconsGen {
   AssetGenImage get category4 =>
       const AssetGenImage('assets/img/icons/category_4.png');
 
+  /// File path: assets/img/icons/iran2Splash.png
+  AssetGenImage get iran2Splash =>
+      const AssetGenImage('assets/img/icons/iran2Splash.png');
+
+  /// File path: assets/img/icons/iranBlackSplash.svg
+  SvgGenImage get iranBlackSplash =>
+      const SvgGenImage('assets/img/icons/iranBlackSplash.svg');
+
+  /// File path: assets/img/icons/iranGreySplash.png
+  AssetGenImage get iranGreySplash =>
+      const AssetGenImage('assets/img/icons/iranGreySplash.png');
+
   /// File path: assets/img/icons/notification.png
   AssetGenImage get notification =>
       const AssetGenImage('assets/img/icons/notification.png');
@@ -126,18 +159,28 @@ class $AssetsImgIconsGen {
   /// File path: assets/img/icons/plus.png
   AssetGenImage get plus => const AssetGenImage('assets/img/icons/plus.png');
 
+  /// File path: assets/img/icons/usSplash.png
+  AssetGenImage get usSplash =>
+      const AssetGenImage('assets/img/icons/usSplash.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [
+  List<dynamic> get values => [
         articles,
         home,
+        iran1Splash,
         menu,
         search,
+        blogSplash,
         category1,
         category2,
         category3,
         category4,
+        iran2Splash,
+        iranBlackSplash,
+        iranGreySplash,
         notification,
-        plus
+        plus,
+        usSplash
       ];
 }
 
@@ -335,6 +378,59 @@ class AssetGenImage {
       _assetName,
       bundle: bundle,
       package: package,
+    );
+  }
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
+}
+
+class SvgGenImage {
+  const SvgGenImage(this._assetName);
+
+  final String _assetName;
+
+  SvgPicture svg({
+    Key? key,
+    bool matchTextDirection = false,
+    AssetBundle? bundle,
+    String? package,
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.contain,
+    AlignmentGeometry alignment = Alignment.center,
+    bool allowDrawingOutsideViewBox = false,
+    WidgetBuilder? placeholderBuilder,
+    String? semanticsLabel,
+    bool excludeFromSemantics = false,
+    SvgTheme theme = const SvgTheme(),
+    ColorFilter? colorFilter,
+    Clip clipBehavior = Clip.hardEdge,
+    @deprecated Color? color,
+    @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
+    @deprecated bool cacheColorFilter = false,
+  }) {
+    return SvgPicture.asset(
+      _assetName,
+      key: key,
+      matchTextDirection: matchTextDirection,
+      bundle: bundle,
+      package: package,
+      width: width,
+      height: height,
+      fit: fit,
+      alignment: alignment,
+      allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+      placeholderBuilder: placeholderBuilder,
+      semanticsLabel: semanticsLabel,
+      excludeFromSemantics: excludeFromSemantics,
+      theme: theme,
+      colorFilter: colorFilter,
+      color: color,
+      colorBlendMode: colorBlendMode,
+      clipBehavior: clipBehavior,
+      cacheColorFilter: cacheColorFilter,
     );
   }
 
