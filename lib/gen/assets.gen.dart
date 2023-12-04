@@ -92,11 +92,16 @@ class $AssetsImgGen {
 class $AssetsImgBackgroundGen {
   const $AssetsImgBackgroundGen();
 
-  /// File path: assets/img/background/bg.jpg
-  AssetGenImage get bg => const AssetGenImage('assets/img/background/bg.jpg');
+  /// File path: assets/img/background/onBoarding.png
+  AssetGenImage get onBoarding =>
+      const AssetGenImage('assets/img/background/onBoarding.png');
+
+  /// File path: assets/img/background/splashBG.jpg
+  AssetGenImage get splashBG =>
+      const AssetGenImage('assets/img/background/splashBG.jpg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [bg];
+  List<AssetGenImage> get values => [onBoarding, splashBG];
 }
 
 class $AssetsImgIconsGen {

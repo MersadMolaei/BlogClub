@@ -1,7 +1,8 @@
 import 'dart:ui';
 import 'dart:async';
 import 'package:blog_club/gen/assets.gen.dart';
-import 'package:blog_club/home.dart';
+import 'package:blog_club/screens/home_screen.dart';
+import 'package:blog_club/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -20,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(const Duration(seconds: 2)).then((value) {
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const HomeScreen()));
+          MaterialPageRoute(builder: (context) => const OnBoardingScreen()));
       // TODO: Try CupertinoPageRoute Instead of MaterialPageRoute.
       //* for changing the page transition animation
     });
@@ -51,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
         children: [
           //* Background image
           Positioned.fill(
-              child: Assets.img.background.bg.image(fit: BoxFit.cover)),
+              child: Assets.img.background.splashBG.image(fit: BoxFit.cover)),
           // Container(
           //   decoration: BoxDecoration(
           //     image: DecorationImage(

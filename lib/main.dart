@@ -1,7 +1,7 @@
 import 'package:blog_club/gen/assets.gen.dart';
 import 'package:blog_club/gen/fonts.gen.dart';
-import 'package:blog_club/home.dart';
-import 'package:blog_club/splash.dart';
+import 'package:blog_club/screens/home_screen.dart';
+import 'package:blog_club/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     const primaryTextColor = Color(0xff0D253C);
     const secondaryTextColor = Color(0xff2D4379);
-    // const primaryColor = Color(0xff376AED);
+    const primaryColor = Color(0xff376AED);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Blog Club',
@@ -40,7 +40,15 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: const ColorScheme.light(
+          primary: primaryColor,
+          onPrimary: Colors.white,
+          surface: Colors.white,
+          onSurface: primaryTextColor,
+          background: Color(0xFFF8FAFF),
+          // background: Color(0xFFFBFCFF),
+          onBackground: primaryTextColor,
+        ),
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         textTheme: const TextTheme(
